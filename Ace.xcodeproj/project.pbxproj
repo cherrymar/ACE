@@ -15,6 +15,7 @@
 		BA14C8BE23FC968000BBB63F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA14C8BD23FC968000BBB63F /* Preview Assets.xcassets */; };
 		BA14C8C123FC968000BBB63F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA14C8BF23FC968000BBB63F /* LaunchScreen.storyboard */; };
 		BA14C8CC23FC968100BBB63F /* AceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA14C8CB23FC968100BBB63F /* AceTests.swift */; };
+		BA14C8D723FC976D00BBB63F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA14C8D623FC976D00BBB63F /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		BA14C8C723FC968100BBB63F /* AceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA14C8CB23FC968100BBB63F /* AceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AceTests.swift; sourceTree = "<group>"; };
 		BA14C8CD23FC968100BBB63F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA14C8D623FC976D00BBB63F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				BA14C8B823FC967F00BBB63F /* ContentView.swift */,
 				BA14C8BA23FC968000BBB63F /* Assets.xcassets */,
 				BA14C8BF23FC968000BBB63F /* LaunchScreen.storyboard */,
+				BA14C8D623FC976D00BBB63F /* Main.storyboard */,
 				BA14C8C223FC968000BBB63F /* Info.plist */,
 				BA14C8B523FC967F00BBB63F /* Ace.xcdatamodeld */,
 				BA14C8BC23FC968000BBB63F /* Preview Content */,
@@ -194,6 +197,7 @@
 				BA14C8C123FC968000BBB63F /* LaunchScreen.storyboard in Resources */,
 				BA14C8BE23FC968000BBB63F /* Preview Assets.xcassets in Resources */,
 				BA14C8BB23FC968000BBB63F /* Assets.xcassets in Resources */,
+				BA14C8D723FC976D00BBB63F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
