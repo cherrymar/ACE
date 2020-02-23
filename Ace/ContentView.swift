@@ -11,41 +11,45 @@ import SwiftUI
 struct ContentView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(fetchRequest: ToDoItem.getAllToDoItems()) var toDoItems:FetchedResults<ToDoItem>
+    @FetchRequest(fetchRequest: IngredientItem.getAllIngredientItems()) var ingredientItems:FetchedResults<IngredientItem>
     
-    @State private var newTodoItem = ""
-    
+    @State private var newIngredientItem = ""
     
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("What's Next?")) {
-                    HStack{
-                        TextField("New item", text: self.$newTodoItem)
+                Section(header: Text("Add Ingredients")) {
+                    HStack {
+                        TextField("New ingredient", text: self.$newIngredientItem)
                         Button(action: {
-                            let toDoItem = ToDoItem( context: self.managedObjectContext)
-                            toDoItem.title = self.newTodoItem
-                            toDoItem.createdAt = Date()
+                            let ingredientItem = IngredientItem( context: self.managedObjectContext)
+                            ingredientItem.ingredient = self.newIngredientItem
+                            ingredientItem.createdAt = Date()
                             
+                            // Save data
                             do {
                                 try self.managedObjectContext.save()
                             } catch {
                                 print(error)
                             }
                             
-                            self.newTodoItem = ""
-                        }){
+                            // Reset for new item
+                            self.newIngredientItem = ""
+                        }) {
                             Image(systemName: "plus.circle.fill")
+                                // bug here???
                                 .foregroundColor(.green)
                                 .imageScale(.large)
                         }
                     }
                 }.font(.headline)
-                Section(header: Text("To Do's")) {
-                    ForEach(self.toDoItems) { todoItem in
-                        ToDoItemView(title: todoItem.title!, createdAt: "\(todoItem.createdAt!)")
+                
+                Section(header: Text("Ingredients")) {
+                    ForEach(self.ingredientItems) { ingredItem in
+                        // bug here???
+                        IngredientItemView(ingredient: ingredItem.ingredient!, createdAt: "\(ingredItem.createdAt!)")
                     }.onDelete{indexSet in
-                        let deleteItem = self.toDoItems[indexSet.first!]
+                        let deleteItem = self.ingredientItems[indexSet.first!]
                         self.managedObjectContext.delete(deleteItem)
                         
                         do {
@@ -56,7 +60,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationBarTitle(Text("My List"))
+            .navigationBarTitle(Text("My Ingredients"))
             .navigationBarItems(trailing: EditButton())
         }
     }

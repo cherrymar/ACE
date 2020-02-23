@@ -1,5 +1,5 @@
 //
-//  ToDoItem.swift
+//  IngredientItem.swift
 //  Ace
 //
 //  Created by Cher Ma  on 2/23/20.
@@ -9,15 +9,15 @@
 import Foundation
 import CoreData
 
-public class ToDoItem:NSManagedObject, Identifiable {
+public class IngredientItem:NSManagedObject, Identifiable {
     @NSManaged public var createdAt:Date?
-    @NSManaged public var title:String?
+    @NSManaged public var ingredient:String?
 }
 
-extension ToDoItem {
-    static func getAllToDoItems() -> NSFetchRequest<ToDoItem> {
-        let request:NSFetchRequest<ToDoItem> = ToDoItem.fetchRequest() as!
-            NSFetchRequest<ToDoItem>
+extension IngredientItem {
+    static func getAllIngredientItems() -> NSFetchRequest<IngredientItem> {
+        let request:NSFetchRequest<IngredientItem> = IngredientItem.fetchRequest() as!
+            NSFetchRequest<IngredientItem>
         
         let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: true)
         

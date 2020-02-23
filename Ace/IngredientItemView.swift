@@ -1,5 +1,5 @@
 //
-//  ToDoItemView.swift
+//  IngredientItemView.swift
 //  Ace
 //
 //  Created by Cher Ma  on 2/23/20.
@@ -8,24 +8,25 @@
 
 import SwiftUI
 
-struct ToDoItemView: View {
+struct IngredientItemView: View {
     
-    var title:String = ""
+    var ingredient:String = ""
     var createdAt:String = ""
     
     var body: some View {
+        // Note highlighted properly???
         HStack {
             VStack(alignment: .leading) {
-                Text(title).font(.headline)
+                Text(ingredient).font(.headline)
                 Text(createdAt).font(.caption)
-                
             }
         }
     }
 }
 
-struct ToDoItemView_Previews: PreviewProvider {
+
+struct IngredientItemView_Preview: PreviewProvider {
     static var previews: some View {
-        ToDoItemView(title: "My great todo", createdAt: "Today")
+        IngredientItemView(ingredient: "ingredient", createdAt: "date added")
     }
 }
