@@ -14,7 +14,7 @@ struct IngredientItemView: View {
     var createdAt:String = ""
     
     var body: some View {
-        // Note highlighted properly???
+        // Create a horizontally stacked view of items
         HStack {
             VStack(alignment: .leading) {
                 Text(ingredient).font(.headline)
@@ -27,6 +27,7 @@ struct IngredientItemView: View {
 
 struct IngredientItemView_Preview: PreviewProvider {
     static var previews: some View {
+        // How to use IngredientItemView
         IngredientItemView(ingredient: "ingredient", createdAt: "date added")
     }
 }

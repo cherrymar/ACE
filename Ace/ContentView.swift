@@ -16,11 +16,13 @@ struct ContentView: View {
     @State private var newIngredientItem = ""
     
     var body: some View {
-//        UIToolbar {}
         NavigationView {
             List {
+                // Section 1- Add ingredients
                 Section(header: Text("Add Ingredients")) {
+                    // Create a horizontally stacked view (text field and add button)
                     HStack {
+                        // First thing is new ingredient text field
                         TextField("New ingredient", text: self.$newIngredientItem)
                         Button(action: {
                             let ingredientItem = IngredientItem( context: self.managedObjectContext)
@@ -44,10 +46,11 @@ struct ContentView: View {
                         }
                     }
                 }.font(.headline)
-                
+                // Section 2- Display ingredients
                 Section(header: Text("Ingredients")) {
-                    // Display ingredients in database
+                    // Display each ingredient in database
                     ForEach(self.ingredientItems) { ingredItem in
+                        // Display ingredient name and time added
                         IngredientItemView(ingredient: ingredItem.ingredient!, createdAt: "\(ingredItem.createdAt!)")
                     }.onDelete{indexSet in
                         // Delete ingredients
