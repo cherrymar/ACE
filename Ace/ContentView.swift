@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var newIngredientItem = ""
     
     var body: some View {
+//        UIToolbar {}
         NavigationView {
             List {
                 Section(header: Text("Add Ingredients")) {
@@ -26,14 +27,14 @@ struct ContentView: View {
                             ingredientItem.ingredient = self.newIngredientItem
                             ingredientItem.createdAt = Date()
                             
-                            // Save data
+                            // Save ingredient to database
                             do {
                                 try self.managedObjectContext.save()
                             } catch {
                                 print(error)
                             }
                             
-                            // Reset for new item
+                            // Reset text field for new ingredient
                             self.newIngredientItem = ""
                         }) {
                             Image(systemName: "plus.circle.fill")
@@ -45,10 +46,11 @@ struct ContentView: View {
                 }.font(.headline)
                 
                 Section(header: Text("Ingredients")) {
+                    // Display ingredients in database
                     ForEach(self.ingredientItems) { ingredItem in
-                        // bug here???
                         IngredientItemView(ingredient: ingredItem.ingredient!, createdAt: "\(ingredItem.createdAt!)")
                     }.onDelete{indexSet in
+                        // Delete ingredients
                         let deleteItem = self.ingredientItems[indexSet.first!]
                         self.managedObjectContext.delete(deleteItem)
                         

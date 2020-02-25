@@ -44,7 +44,7 @@
 		BA14C8C723FC968100BBB63F /* AceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA14C8CB23FC968100BBB63F /* AceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AceTests.swift; sourceTree = "<group>"; };
 		BA14C8CD23FC968100BBB63F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA14C8D623FC976D00BBB63F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BA14C8D623FC976D00BBB63F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "/Users/cherma/Documents/Harvey Mudd/2020/CS121/Ace/Ace/Main.storyboard"; sourceTree = "<absolute>"; };
 		BA14C8D823FC996F00BBB63F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BA82D0A5240274620066DA39 /* IngredientItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientItem.swift; sourceTree = "<group>"; };
 		BA82D0A7240309F40066DA39 /* IngredientItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientItemView.swift; sourceTree = "<group>"; };
