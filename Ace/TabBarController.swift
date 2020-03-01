@@ -6,13 +6,10 @@
 //  Copyright © 2020 Cher Ma . All rights reserved.
 //
 
-import SwiftUI
-//
-//struct ViewController: View {
-//    
-//}
-//
-//struct ViewController: PreviewProvider {
-//    
-//}
+import UIKit
 
+class TabBarController: UITabBarController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}

@@ -7,67 +7,42 @@
 //
 
 import SwiftUI
+//var HomeView = HomeView()
 
 struct ContentView: View {
     
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(fetchRequest: IngredientItem.getAllIngredientItems()) var ingredientItems:FetchedResults<IngredientItem>
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor.purple
+    }
     
-    @State private var newIngredientItem = ""
+    @State var selected = 3
     
     var body: some View {
-        NavigationView {
-            List {
-                // Section 1- Add ingredients
-                Section(header: Text("Add Ingredients")) {
-                    // Create a horizontally stacked view (text field and add button)
-                    HStack {
-                        // First thing is new ingredient text field
-                        TextField("New ingredient", text: self.$newIngredientItem)
-                        Button(action: {
-                            let ingredientItem = IngredientItem( context: self.managedObjectContext)
-                            ingredientItem.ingredient = self.newIngredientItem
-                            ingredientItem.createdAt = Date()
-                            
-                            // Save ingredient to database
-                            do {
-                                try self.managedObjectContext.save()
-                            } catch {
-                                print(error)
-                            }
-                            
-                            // Reset text field for new ingredient
-                            self.newIngredientItem = ""
-                        }) {
-                            Image(systemName: "plus.circle.fill")
-                                // bug here???
-                                .foregroundColor(.green)
-                                .imageScale(.large)
-                        }
-                    }
-                }.font(.headline)
-                // Section 2- Display ingredients
-                Section(header: Text("Ingredients")) {
-                    // Display each ingredient in database
-                    ForEach(self.ingredientItems) { ingredItem in
-                        // Display ingredient name and time added
-                        IngredientItemView(ingredient: ingredItem.ingredient!, createdAt: "\(ingredItem.createdAt!)")
-                    }.onDelete{indexSet in
-                        // Delete ingredients
-                        let deleteItem = self.ingredientItems[indexSet.first!]
-                        self.managedObjectContext.delete(deleteItem)
-                        
-                        do {
-                            try self.managedObjectContext.save()
-                        } catch {
-                            print(error)
-                        }
-                    }
-                }
-            }
-            .navigationBarTitle(Text("My Ingredients"))
-            .navigationBarItems(trailing: EditButton())
-        }
+        TabView(selection: $selected) {
+            HomeView().tabItem({
+                Image(systemName: Constants.TabBarImageName.tabBar0)
+                    .font(.title)
+                Text("\(Constants.TabBarText.tabBar0)")
+            }).tag(0)
+            
+            SearchView().tabItem({
+                Image(systemName: Constants.TabBarImageName.tabBar1)
+                    .font(.title)
+                Text("\(Constants.TabBarText.tabBar1)")
+            }).tag(1)
+            
+            FavoritesView().tabItem({
+                Image(systemName: Constants.TabBarImageName.tabBar2)
+                    .font(.title)
+                Text("\(Constants.TabBarText.tabBar2)")
+            }).tag(2)
+            
+            SettingsView().tabItem({
+                Image(systemName: Constants.TabBarImageName.tabBar3)
+                    .font(.title)
+                Text("\(Constants.TabBarText.tabBar3)")
+            }).tag(3)
+        }.accentColor(Color.red)
     }
 }
 
