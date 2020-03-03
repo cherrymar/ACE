@@ -19,3 +19,6 @@ struct FavoritesView_Previews: PreviewProvider {
         FavoritesView()
     }
 }
+
+
+// display recipes that have been saved

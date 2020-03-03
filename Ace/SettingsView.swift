@@ -19,3 +19,7 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView()
     }
 }
+
+
+// Change login and default options
+// Yes/No reminder to help remmeber when to buy more ingredient
