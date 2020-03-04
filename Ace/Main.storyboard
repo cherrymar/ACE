@@ -14,10 +14,45 @@
                     <view key="view" contentMode="scaleToFill" id="3wm-Kg-67n">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Input ID" borderStyle="roundedRect" placeholder="Input ID" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="88O-yw-rB1">
+                                <rect key="frame" x="159" y="541" width="97" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="Food info" translatesAutoresizingMaskIntoConstraints="NO" id="wjP-lM-Udw">
+                                <rect key="frame" x="87" y="294" width="240" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6Q-ts-D3Y">
+                                <rect key="frame" x="171" y="627" width="73" height="30"/>
+                                <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Fetch data">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="enterTapped:" destination="WpM-Hg-uPQ" eventType="touchUpInside" id="Oyy-Lo-MAz"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="w6Q-ts-D3Y" firstAttribute="centerY" secondItem="wjP-lM-Udw" secondAttribute="centerY" id="GFR-Ro-xK9"/>
+                            <constraint firstItem="88O-yw-rB1" firstAttribute="centerY" secondItem="wjP-lM-Udw" secondAttribute="centerY" id="HHv-MC-1oI"/>
+                            <constraint firstItem="w6Q-ts-D3Y" firstAttribute="centerY" secondItem="wjP-lM-Udw" secondAttribute="centerY" id="M93-qG-EwJ"/>
+                            <constraint firstItem="88O-yw-rB1" firstAttribute="centerY" secondItem="wjP-lM-Udw" secondAttribute="centerY" id="MPU-S3-DRE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="HPu-nh-hxf"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="chb-SC-yZp" userLabel="Home"/>
+                    <connections>
+                        <outlet property="fetchData" destination="w6Q-ts-D3Y" id="FPi-ID-2XV"/>
+                        <outlet property="foodDisplay" destination="wjP-lM-Udw" id="cfe-zx-yu7"/>
+                        <outlet property="foodInput" destination="88O-yw-rB1" id="uRN-0h-bf4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9qs-vT-lQY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

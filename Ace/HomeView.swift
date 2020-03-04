@@ -10,7 +10,7 @@ import SwiftUI
 
 
 struct HomeView: View {
-    let image = UIImage(named: "Emily") // UIImage?
+    
     var body: some View {
         VStack {
             Image("Emily")
