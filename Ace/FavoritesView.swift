@@ -9,6 +9,10 @@
 import SwiftUI
 
 struct FavoritesView: View {
+//    @Environment(\.managedObjectContext) var managedObjectContext
+//    @FetchRequest(fetchRequest: FavoriteItem.getAllFavoriteItems()) var favoriteItems:FetchedResults<FavoriteItem>
+    
+    
     var body: some View {
         Text("Favorites View")
     }

@@ -11,6 +11,7 @@ import CoreData
 
 public class IngredientItem:NSManagedObject, Identifiable {
     @NSManaged public var createdAt:Date?
+    @NSManaged public var expiresOn:Date?
     @NSManaged public var ingredient:String?
 }
 

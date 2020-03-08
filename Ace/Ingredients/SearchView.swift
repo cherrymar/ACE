@@ -15,6 +15,7 @@ struct SearchView: View {
     @FetchRequest(fetchRequest: IngredientItem.getAllIngredientItems()) var ingredientItems:FetchedResults<IngredientItem>
     
     @State private var newIngredientItem = ""
+    @State private var expirationDate = Date();
     
     var body: some View {
         NavigationView {
@@ -23,12 +24,20 @@ struct SearchView: View {
                 Section(header: Text("Add Ingredients")) {
                     // Create a horizontally stacked view (text field and add button)
                     HStack {
-                        // First thing is new ingredient text field
+                        // New ingredient text field
                         TextField("New ingredient", text: self.$newIngredientItem)
+                        
+//                        DatePicker (
+//                            $expirationDate,
+//                            minimum: Date(),
+//                            displayComponents: .date
+//                        )
+                        
                         Button(action: {
                             let ingredientItem = IngredientItem( context: self.managedObjectContext)
                             ingredientItem.ingredient = self.newIngredientItem
                             ingredientItem.createdAt = Date()
+                            ingredientItem.expiresOn = Date()
                             
                             // Save ingredient to database
                             do {

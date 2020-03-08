@@ -8,18 +8,12 @@
 
 import SwiftUI
 
+
 struct HomeView: View {
-//    @Environment(\.managedObjectContext) var managedObjectContext
-    
     
     var body: some View {
         VStack {
             Image("Emily")
-                .resizable()
-//                .clipShape(Circle())
-//                .overlay(Circle().stroke(Color.black, lineWidth: 4))
-                .frame(width: 250, height: 250)
-                .clipped()
             // Generate Recipe
             Button(action: {
                 //Display new screen
@@ -46,4 +40,7 @@ struct HomeView_Previews: PreviewProvider {
 }
 
 
-// display recipes that have been saved
+// Image logo
+// Button- find recipe
+// Changes to recipes page- choose how to filter
+// checkmarks for all the things to consider

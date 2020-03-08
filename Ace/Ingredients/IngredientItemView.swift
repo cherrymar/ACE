@@ -12,6 +12,7 @@ struct IngredientItemView: View {
     
     var ingredient:String = ""
     var createdAt:String = ""
+    var expiresOn:String = ""
     
     var body: some View {
         // Create a horizontally stacked view of items
@@ -19,6 +20,7 @@ struct IngredientItemView: View {
             VStack(alignment: .leading) {
                 Text(ingredient).font(.headline)
                 Text(createdAt).font(.caption)
+                Text(expiresOn).font(.caption)
             }
         }
     }
