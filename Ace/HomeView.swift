@@ -13,29 +13,27 @@ struct HomeView: View {
     
     
     var body: some View {
-        VStack {
-            Image("Emily")
-                .resizable()
-//                .clipShape(Circle())
-//                .overlay(Circle().stroke(Color.black, lineWidth: 4))
-                .frame(width: 250, height: 250)
-                .clipped()
-            // Generate Recipe
-            Button(action: {
-                //Display new screen
-            }) {
-                Text("Generate a recipe")
-                    .foregroundColor(.black)
-            }
-            // Search a recipe
-            Button(action: {
-                //Display new screen
-            }) {
-                Text("Search a recipe")
-                    .foregroundColor(.black)
+        NavigationView {
+            VStack {
+                Image("Emily")
+                    .resizable()
+    //                .clipShape(Circle())
+    //                .overlay(Circle().stroke(Color.black, lineWidth: 4))
+                    .frame(width: 250, height: 250)
+                    .clipped()
                 
+                // Generate Recipe
+                NavigationLink(destination: AutoRecipeView() ) {
+                    Text("Generate a recipe")
+                }.buttonStyle(NavigationButtonStyle())
+                NavigationLink(destination: SearchForRecipeView() ) {
+                    Text("Search for a recipe")
+                }.buttonStyle(NavigationButtonStyle())
+                
+               
             }
         }
+        
     }
 }
 
@@ -45,5 +43,20 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
-
+struct NavigationButtonStyle: ButtonStyle {
+ 
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .frame(minWidth: 0, maxWidth: 200)
+            .padding()
+            .foregroundColor(.white)
+            .background(Color("softRed"))
+            .cornerRadius(20)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 5)
+            .font(.custom("Helvetica Neue", size: 18))
+//            .background(LinearGradient(gradient: Gradient(colors: [Color(.red), Color(.black)]), startPoint: .leading, endPoint: .trailing))
+            
+    }
+}
 // display recipes that have been saved
