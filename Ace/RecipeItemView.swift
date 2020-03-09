@@ -9,18 +9,38 @@
 import SwiftUI
 
 struct RecipeItemView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
     
     var recipeName:String = ""
     var link:String = ""
-    var prepTime:Double = 0.0
+    var prepTime:String = ""
+    
+//    @State private var newFavoriteItem = ""
     
     var body: some View {
         // Create a horizontally stacked view of items
         HStack {
-            VStack(alignment: .leading) {
-                Text(recipeName).font(.headline)
-                Text(link).font(.caption)
+            HStack {
+                VStack(alignment: .leading) {
+                HStack {
+                    Text(recipeName).font(.headline)
+                    Text(link).font(.caption)
+                }
                 Text(String(prepTime)).font(.caption)
+                }
+            Button(action: {
+//                let recipeItem = RecipeItem(context: self.managedObjectContext)
+//                recipeItem.favorite =
+//                do {
+//                    try self.managedObjectContext.save()
+//                } catch {
+//                    print(error)
+//                }
+            }) {
+                Image("heart")
+                    .foregroundColor(.red)
+                    .imageScale(.large)
+                }
             }
         }
     }
@@ -29,7 +49,7 @@ struct RecipeItemView: View {
 
 struct RecipeItemView_Preview: PreviewProvider {
     static var previews: some View {
-        // How to use IngredientItemView
-        RecipeItemView(recipeName: "recipe name", link: "link", prepTime: 0.0)
+        // How to use RecipeItemView
+        RecipeItemView(recipeName: "recipe name", link: "link", prepTime: "0.0")
     }
 }

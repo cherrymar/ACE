@@ -167,7 +167,7 @@
         <scene sceneID="4dn-Eb-wJu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x3F-Fw-dAP" userLabel="Settings" customClass="SettingsView" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="l1f-Yy-4GC"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="hea" id="l1f-Yy-4GC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1dc-ho-HIE">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -184,9 +184,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="hea" width="16" height="16"/>
         <image name="heart_filled" width="30" height="30"/>
         <image name="home" width="30" height="30"/>
         <image name="search_icon" width="30" height="30"/>
-        <image name="settings" width="30" height="30"/>
     </resources>
 </document>

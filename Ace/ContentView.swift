@@ -13,7 +13,9 @@ struct ContentView: View {
     
     init() {
         // Chang tab bar color
-        UITabBar.appearance().backgroundColor = UIColor.purple
+        UITabBar.appearance().backgroundColor = .white
+        UITabBar.appearance().barTintColor = .black
+        UITabBar.appearance().tintColor = UIColor(named: "softRed")
 //        UITabBar.appearance().
     }
     

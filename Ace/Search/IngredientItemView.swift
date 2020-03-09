@@ -30,6 +30,6 @@ struct IngredientItemView: View {
 struct IngredientItemView_Preview: PreviewProvider {
     static var previews: some View {
         // How to use IngredientItemView
-        IngredientItemView(ingredient: "ingredient", createdAt: "date added")
+        IngredientItemView(ingredient: "ingredient", createdAt: "date added", expiresOn: "expires on")
     }
 }

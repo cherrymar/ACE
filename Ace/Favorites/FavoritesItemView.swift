@@ -6,6 +6,7 @@
 //  Copyright © 2020 Cher Ma . All rights reserved.
 //
 
+
 import SwiftUI
 
 struct FavoritesItemView: View {
@@ -27,7 +28,7 @@ struct FavoritesItemView: View {
 }
 
 
-struct FavoritesItemView_Preview: PreviewProvider {
+struct FavoritesItemViewView_Preview: PreviewProvider {
     static var previews: some View {
         // How to use IngredientItemView
         FavoritesItemView(ingredient: "ingredient", createdAt: "date added")

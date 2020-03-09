@@ -25,19 +25,19 @@ struct SearchView: View {
                     // Create a horizontally stacked view (text field and add button)
                     HStack {
                         // New ingredient text field
-                        TextField("New ingredient", text: self.$newIngredientItem)
+                        VStack {
+                            TextField("New ingredient", text: self.$newIngredientItem)
+                            
+                            Text("Set Expiration Date")
+                            DatePicker("", selection: $expirationDate, in: Date()..., displayedComponents:.date).labelsHidden()
+                        }
                         
-//                        DatePicker (
-//                            $expirationDate,
-//                            minimum: Date(),
-//                            displayComponents: .date
-//                        )
                         
                         Button(action: {
                             let ingredientItem = IngredientItem( context: self.managedObjectContext)
                             ingredientItem.ingredient = self.newIngredientItem
                             ingredientItem.createdAt = Date()
-                            ingredientItem.expiresOn = Date()
+                            ingredientItem.expiresOn = self.expirationDate
                             
                             // Save ingredient to database
                             do {
@@ -61,7 +61,7 @@ struct SearchView: View {
                     // Display each ingredient in database
                     ForEach(self.ingredientItems) { ingredItem in
                         // Display ingredient name and time added
-                        IngredientItemView(ingredient: ingredItem.ingredient!, createdAt: "\(ingredItem.createdAt!)")
+                        IngredientItemView(ingredient: ingredItem.ingredient!, createdAt: "\(ingredItem.createdAt!)", expiresOn: "\(ingredItem.expiresOn!)")
                     }.onDelete{indexSet in
                         // Delete ingredients
                         let deleteItem = self.ingredientItems[indexSet.first!]

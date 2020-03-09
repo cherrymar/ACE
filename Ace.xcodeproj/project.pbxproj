@@ -34,6 +34,7 @@
 		BAAF64B424158DE90028646E /* FavoritesItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF64B324158DE90028646E /* FavoritesItemView.swift */; };
 		BAAF64B82415A2C20028646E /* AutoRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF64B72415A2C20028646E /* AutoRecipeView.swift */; };
 		BAAF64BA2415A2D80028646E /* SearchForRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF64B92415A2D80028646E /* SearchForRecipeView.swift */; };
+		BAAF64C62415C1F10028646E /* FavoriteItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF64C02415C1F10028646E /* FavoriteItem+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		BAAF64B324158DE90028646E /* FavoritesItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesItemView.swift; sourceTree = "<group>"; };
 		BAAF64B72415A2C20028646E /* AutoRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRecipeView.swift; sourceTree = "<group>"; };
 		BAAF64B92415A2D80028646E /* SearchForRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchForRecipeView.swift; sourceTree = "<group>"; };
+		BAAF64C02415C1F10028646E /* FavoriteItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 		BA14C8B023FC967F00BBB63F /* Ace */ = {
 			isa = PBXGroup;
 			children = (
+				BAAF64C02415C1F10028646E /* FavoriteItem+CoreDataProperties.swift */,
 				BA14C8B123FC967F00BBB63F /* AppDelegate.swift */,
 				BA11C61B240AFA94008C0BC3 /* SettingsView.swift */,
 				BA0C37B62411B09A001B3BFB /* Search */,
@@ -303,6 +306,7 @@
 				BAAF64B2241562AE0028646E /* FavoritesItem.swift in Sources */,
 				76ED2268240EEFCB00F0CD9B /* RestCaller.swift in Sources */,
 				BA14C8B423FC967F00BBB63F /* SceneDelegate.swift in Sources */,
+				BAAF64C62415C1F10028646E /* FavoriteItem+CoreDataProperties.swift in Sources */,
 				BA0C37BA2411B1A5001B3BFB /* HomeView.swift in Sources */,
 				76ED2262240EE78B00F0CD9B /* RestManager.swift in Sources */,
 				BA11C622240AFFC4008C0BC3 /* Constants.swift in Sources */,

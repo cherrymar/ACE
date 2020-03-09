@@ -10,7 +10,35 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        Text("Settings View")
+        NavigationView {
+            List {
+                // Section 1- Add ingredients
+                Section(header: Text("Profile Settings")) {
+                    VStack (alignment: .leading) {
+                        Text("Test username")
+                        Text("Test email")
+                        Text("Test username")
+                    }
+                }
+                .font(.headline)
+                Section(header: Text("Search Settings")) {
+                    VStack (alignment: .leading) {
+                        Text("Test username")
+                        Text("Test email")
+                        Text("Test username")
+                    }
+                }
+                .font(.headline)
+                Section(header: Text("Profile")) {
+                    VStack (alignment: .leading) {
+                        Text("Test username")
+                        Text("Test email")
+                        Text("Test username")
+                    }
+                }
+                .font(.headline)
+            }
+        }.navigationBarTitle(Text("My Ingredients"))
     }
 }
 
