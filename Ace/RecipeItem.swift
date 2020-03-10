@@ -14,11 +14,6 @@ public class RecipeItem:NSManagedObject, Identifiable {
     @NSManaged public var link: String?
     @NSManaged public var prepTime: Double
     @NSManaged public var recipeName: String?
-//    @NSManaged public var favorite: FavoriteItem?
-    
-    public var wrappedRecipeName: String {
-        recipeName ?? "Unknown Recipe"
-    }
 }
 
 extension RecipeItem {
@@ -28,7 +23,7 @@ extension RecipeItem {
             NSFetchRequest<RecipeItem>
         
         // Sort list of ingredients by time added
-        let sortDescriptor = NSSortDescriptor(key: "recipeName", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: sortType, ascending: true)
         request.sortDescriptors = [sortDescriptor]
         
         return request

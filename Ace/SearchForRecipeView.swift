@@ -21,15 +21,12 @@ struct SearchForRecipeView: View {
             List {
                 // Display recipes found
                 // Create a horizontally stacked view (text field and add button)
-                HStack {
-                    List {
-                        // Display each ingredient in database
-                        ForEach(self.recipeItems) { recipeItem in
-                            // Display ingredient name and time added
-                            RecipeItemView(recipeName: recipeItem.recipeName!)
-                        }
-                    }
+                // Display each ingredient in database
+                ForEach(self.recipeItems) { recipeItem in
+                    // Display ingredient name and time added
+                    RecipeItemView(recipeName: recipeItem.recipeName!, link: recipeItem.link!, prepTime: String(recipeItem.prepTime))
                 }
+                
             }
             .navigationBarTitle(Text("Recipes"))
 //            .navigationBarItems(trailing: EditButton())

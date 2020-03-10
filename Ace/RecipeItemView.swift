@@ -37,7 +37,7 @@ struct RecipeItemView: View {
 //                    print(error)
 //                }
             }) {
-                Image("heart")
+                Image("heart_filled")
                     .foregroundColor(.red)
                     .imageScale(.large)
                 }

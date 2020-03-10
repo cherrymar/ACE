@@ -55,7 +55,6 @@ struct HomeView: View {
                         print(error)
                     }
                     
-                    Text("Complete")
                 }) {
                     Text("Add")
                         .foregroundColor(.black)
