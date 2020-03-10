@@ -11,6 +11,7 @@ import SwiftUI
 
 
 struct SearchView: View {
+    let restCaller = RestCaller()
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: IngredientItem.getAllIngredientItems()) var ingredientItems:FetchedResults<IngredientItem>
     
@@ -23,11 +24,11 @@ struct SearchView: View {
                 // Section 1- Add ingredients
                 Section(header: Text("Add Ingredients")) {
                     // Create a horizontally stacked view (text field and add button)
-                    HStack {
+                    HStack (spacing: 20){
                         // New ingredient text field
                         VStack {
                             TextField("New ingredient", text: self.$newIngredientItem)
-                            
+                            DropDown()
                             Text("Set Expiration Date")
                             DatePicker("", selection: $expirationDate, in: Date()..., displayedComponents:.date).labelsHidden()
                         }
@@ -35,9 +36,12 @@ struct SearchView: View {
                         
                         Button(action: {
                             let ingredientItem = IngredientItem( context: self.managedObjectContext)
-                            ingredientItem.ingredient = self.newIngredientItem
+                            //doesnt work because of async
+                            
+                            ingredientItem.ingredient = ""
                             ingredientItem.createdAt = Date()
                             ingredientItem.expiresOn = self.expirationDate
+                            self.restCaller.getFood(foodId: self.newIngredientItem, ingredientItem: ingredientItem)
                             
                             // Save ingredient to database
                             do {
@@ -61,6 +65,7 @@ struct SearchView: View {
                     // Display each ingredient in database
                     ForEach(self.ingredientItems) { ingredItem in
                         // Display ingredient name and time added
+                        //ingredItem.ingredient=""
                         IngredientItemView(ingredient: ingredItem.ingredient!, createdAt: "\(ingredItem.createdAt!)", expiresOn: "\(ingredItem.expiresOn!)")
                     }.onDelete{indexSet in
                         // Delete ingredients
@@ -84,5 +89,19 @@ struct SearchView: View {
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView()
+    }
+}
+
+struct DropDown: View {
+    @State var expand = false
+    var body: some View {
+        VStack() {
+            VStack(spacing: 30) {
+                HStack {
+                    Text("Menu").fontWeight(.bold)
+                    Image(systemName: "chevron.up").resizable().frame(width: 13, height: 6)
+                }
+            }
+        }
     }
 }

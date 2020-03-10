@@ -11,6 +11,13 @@ import Foundation
 var defString = String(stringLiteral: "")
 var defInt = -1
 
+struct FoodSearch: Codable {
+    var foodSearchCriteria: String?
+    var totalHits: Int?
+    var currentPage: Int?
+    var totalPages: Int?
+    var foods: [briefFoodData]?
+}
 struct FoodData: Codable, CustomStringConvertible {
     var desc: String?
     var category: foodCategory?
@@ -38,11 +45,9 @@ struct FoodData: Codable, CustomStringConvertible {
     }
     
     var description: String {
-        let output = """
-        description = \(desc ?? defString)
-        category = \(category?.description ?? defString)
-        
-        """
+        let output = "description = \(desc ?? defString)"
+//        category = \(category?.description ?? defString)
+
         
         return output
     }
@@ -58,5 +63,17 @@ struct foodCategory: Codable {
         case code = "code"
         case description = "description"
     }
+}
+
+struct briefFoodData: Codable {
+    var fdcId: Int
+    var description: String
+    var dataType: String
+    var gtinUpc: String
+    var publishedDate: String
+    var brandOwner: String
+    var ingredients: String
+    var allHiglightFields: String
+    var score: Double
 }
 
