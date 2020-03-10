@@ -12,11 +12,19 @@ var defString = String(stringLiteral: "")
 var defInt = -1
 
 struct FoodSearch: Codable {
-    var foodSearchCriteria: String?
+    var foodSearchCriteria: foodSearchCriteria?
     var totalHits: Int?
     var currentPage: Int?
     var totalPages: Int?
     var foods: [briefFoodData]?
+    
+    private enum CodingKeys: String, CodingKey {
+        case foodSearchCriteria = "foodSearchCriteria"
+        case totalHits = "totalHits"
+        case currentPage = "currentPage"
+        case totalPages = "totalPages"
+        case foods = "foods"
+    }
 }
 struct FoodData: Codable, CustomStringConvertible {
     var desc: String?
@@ -65,15 +73,40 @@ struct foodCategory: Codable {
     }
 }
 
-struct briefFoodData: Codable {
+struct briefFoodData: Codable, Hashable {
     var fdcId: Int
     var description: String
-    var dataType: String
-    var gtinUpc: String
-    var publishedDate: String
-    var brandOwner: String
-    var ingredients: String
-    var allHiglightFields: String
-    var score: Double
+    var dataType: String?
+    var gtinUpc: String?
+    var publishedDate: String?
+    var brandOwner: String?
+    var ingredients: String?
+    var allHiglightFields: String?
+    var score: Double?
+    
+    private enum CodingKeys: String, CodingKey {
+        case fdcId = "fdcId"
+        case description = "description"
+        case dataType = "dataType"
+        case gtinUpc = "gtinUpc"
+        case publishedDate = "publishedDate"
+        case brandOwner = "brandOwner"
+        case ingredients = "ingredients"
+        case allHiglightFields = "allHiglightFields"
+        case score = "score"
+    }
+    
+}
+
+struct foodSearchCriteria: Codable {
+    var generalSearchInput: String
+    var pageNumber: Int
+    var requireAllWords: Bool
+    
+    private enum CodingKeys: String, CodingKey {
+    case generalSearchInput = "generalSearchInput"
+    case pageNumber = "pageNumber"
+    case requireAllWords = "requireAllWords"
+    }
 }
 

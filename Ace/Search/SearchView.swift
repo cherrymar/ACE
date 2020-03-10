@@ -8,6 +8,23 @@
 
 import SwiftUI
 //import UIKit
+    // List of briefFoodData
+public class CandidateContainer {
+    var maxResults = 5
+    var searchCandidates = [briefFoodData]()
+    func setCandidates (newCandidates: [briefFoodData]) {
+        if newCandidates.count >= maxResults {
+            self.searchCandidates = Array(newCandidates[0 ..< maxResults])
+        } else {
+            self.searchCandidates = newCandidates
+        }
+        
+    }
+    func emptyCandidates() {
+        self.searchCandidates = [briefFoodData]()
+    }
+}
+var candidateContainer = CandidateContainer()
 
 
 struct SearchView: View {
@@ -15,7 +32,7 @@ struct SearchView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: IngredientItem.getAllIngredientItems()) var ingredientItems:FetchedResults<IngredientItem>
     
-    @State private var newIngredientItem = ""
+    @State public var newIngredientItem = ""
     @State private var expirationDate = Date();
     
     var body: some View {
@@ -24,40 +41,23 @@ struct SearchView: View {
                 // Section 1- Add ingredients
                 Section(header: Text("Add Ingredients")) {
                     // Create a horizontally stacked view (text field and add button)
-                    HStack (spacing: 20){
+                    HStack{
                         // New ingredient text field
                         VStack {
-                            TextField("New ingredient", text: self.$newIngredientItem)
-                            DropDown()
+                            HStack {
+                                TextField("New ingredient", text: self.$newIngredientItem)
+                                Button(action: {
+                                    self.restCaller.searchFood(foodName: self.newIngredientItem, candidateContainer: candidateContainer)
+                                }) {
+                                    Image(systemName: "plus.circle.fill").foregroundColor(.green).imageScale(.large)
+                                }
+                            }
+                            
+                            DropDown(parent: self)
                             Text("Set Expiration Date")
                             DatePicker("", selection: $expirationDate, in: Date()..., displayedComponents:.date).labelsHidden()
                         }
                         
-                        
-                        Button(action: {
-                            let ingredientItem = IngredientItem( context: self.managedObjectContext)
-                            //doesnt work because of async
-                            
-                            ingredientItem.ingredient = ""
-                            ingredientItem.createdAt = Date()
-                            ingredientItem.expiresOn = self.expirationDate
-                            self.restCaller.getFood(foodId: self.newIngredientItem, ingredientItem: ingredientItem)
-                            
-                            // Save ingredient to database
-                            do {
-                                try self.managedObjectContext.save()
-                            } catch {
-                                print(error)
-                            }
-                            
-                            // Reset text field for new ingredient
-                            self.newIngredientItem = ""
-                        }) {
-                            Image(systemName: "plus.circle.fill")
-                                // bug here???
-                                .foregroundColor(.green)
-                                .imageScale(.large)
-                        }
                     }
                 }.font(.headline)
                 // Section 2- Display ingredients
@@ -65,7 +65,6 @@ struct SearchView: View {
                     // Display each ingredient in database
                     ForEach(self.ingredientItems) { ingredItem in
                         // Display ingredient name and time added
-                        //ingredItem.ingredient=""
                         IngredientItemView(ingredient: ingredItem.ingredient!, createdAt: "\(ingredItem.createdAt!)", expiresOn: "\(ingredItem.expiresOn!)")
                     }.onDelete{indexSet in
                         // Delete ingredients
@@ -84,6 +83,31 @@ struct SearchView: View {
             .navigationBarItems(trailing: EditButton())
         }
     }
+    
+    func addIngredient(ingredientID: String){
+        /*while (!self.ingredientItems.isEmpty) {
+            self.managedObjectContext.delete(self.ingredientItems[0])
+            do {
+                try self.managedObjectContext.save()
+            } catch {
+                print(error)
+            }
+        }*/
+        let ingredientItem = IngredientItem( context: self.managedObjectContext)
+        ingredientItem.ingredient = ""
+        ingredientItem.createdAt = Date()
+        ingredientItem.expiresOn = self.expirationDate
+        self.restCaller.getFood(foodId: ingredientID, ingredientItem: ingredientItem)
+        
+        // Save ingredient to database
+        do {
+            try self.managedObjectContext.save()
+        } catch {
+            print(error)
+        }
+        // Reset text field for new ingredient
+        self.newIngredientItem = ""
+    }
 }
 
 struct SearchView_Previews: PreviewProvider {
@@ -94,12 +118,30 @@ struct SearchView_Previews: PreviewProvider {
 
 struct DropDown: View {
     @State var expand = false
+    var parent: SearchView?
     var body: some View {
         VStack() {
-            VStack(spacing: 30) {
-                HStack {
-                    Text("Menu").fontWeight(.bold)
-                    Image(systemName: "chevron.up").resizable().frame(width: 13, height: 6)
+            HStack {
+                Text("Ingredient Search").fontWeight(.bold)
+                Image(systemName: expand ? "chevron.up" : "chevron.down").resizable().frame(width: 13, height: 6)
+            }.onTapGesture {
+                self.expand.toggle()
+            }
+            if expand {
+                VStack(spacing: 30) {
+                
+                    ForEach(candidateContainer.searchCandidates, id: \.self) {candidate in
+                        Button(action: {
+                            self.parent?.addIngredient(ingredientID: "\(candidate.fdcId)")
+                            self.parent?.newIngredientItem = ""
+                            candidateContainer.emptyCandidates()
+                            self.expand.toggle()
+                            print("tapped\(candidate.fdcId)")
+                        }) {
+                            Text("\(candidate.description) from \(candidate.brandOwner ?? "anonymous")").fontWeight(.light).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.purple, lineWidth: 2))
+                        }.foregroundColor(.orange).accentColor(.blue).border(LinearGradient(gradient: .init(colors: [.blue, .purple]), startPoint: .top, endPoint: .bottom), width: 5)
+                    }
+                    
                 }
             }
         }

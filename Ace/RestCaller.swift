@@ -12,18 +12,21 @@ class RestCaller {
     let rest = RestManager()
     let apiKey = "RH3s29lFBdgsmpyxvQAwGJz60Ec71bxVlgjUBfRX"
     
-    func searchFood(foodName: String) {
-        let baseUrl = "https://api.nal.usda.gov/fdc/v1/seach"
-        let fullUrl = baseUrl + "?api_key=" + apiKey
+    func searchFood(foodName: String, candidateContainer: CandidateContainer) {
+        let baseUrl = "https://api.nal.usda.gov/fdc/v1/search"
+        let fullUrl = baseUrl + "?api_key=" + apiKey// + "\\&generalSearchInput="
+            
+        var fixedUrl = fullUrl + foodName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
         guard let url = URL(string: fullUrl) else {return}
         rest.requestHttpHeaders.add(value: "application/json", forKey: "Content-Type")
-        rest.httpBodyParameters.add(value: "generalSearchInput", forKey: foodName)
-        rest.makeRequest(toURL: url, withHttpMethod: .get) { (results) in
+        rest.httpBodyParameters.add(value: foodName, forKey: "generalSearchInput")
+        rest.makeRequest(toURL: url, withHttpMethod: .post) { (results) in
             if let data = results.data {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                guard let userData = try? decoder.decode(FoodData.self, from: data) else { return }
-                
+                guard let userData = try? decoder.decode(FoodSearch.self, from: data) else { return }
+                candidateContainer.setCandidates(newCandidates: userData.foods!)
             }
         }
     }
@@ -55,6 +58,7 @@ class RestCaller {
         guard let url = URL(string: fullUrl) else { return }
         
         rest.requestHttpHeaders.add(value: "application/json", forKey: "Content-Type")
+        rest.httpBodyParameters = RestManager.RestEntity()
         rest.makeRequest(toURL: url, withHttpMethod: .get) { (results) in
             if let data = results.data {
                 let decoder = JSONDecoder()
@@ -65,6 +69,5 @@ class RestCaller {
                 print(foodInfo)
             }
         }
-        //ingredientItem.ingredient = foodInfo
     }
 }
