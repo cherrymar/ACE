@@ -33,32 +33,32 @@ struct HomeView: View {
                 }.buttonStyle(NavigationButtonStyle())
                 
                 
-                Button(action: {
-                    let recipeItem1 = RecipeItem( context: self.managedObjectContext)
-                    recipeItem1.recipeName = "test 1"
-                    recipeItem1.link = "www.google.com"
-                    recipeItem1.prepTime = 10
-                    
-                    let recipeItem2 = RecipeItem( context: self.managedObjectContext)
-                    recipeItem2.recipeName = "test 2"
-                    recipeItem2.link = "www.google.com"
-                    recipeItem2.prepTime = 11
-                    
-                    let recipeItem3 = RecipeItem( context: self.managedObjectContext)
-                    recipeItem3.recipeName = "test 3"
-                    recipeItem3.link = "www.google.com"
-                    recipeItem3.prepTime = 12
-                    
-                    do {
-                        try self.managedObjectContext.save()
-                    } catch {
-                        print(error)
-                    }
-                    
-                }) {
-                    Text("Add")
-                        .foregroundColor(.black)
-                }
+//                Button(action: {
+//                    let recipeItem1 = FavoriteItem( context: self.managedObjectContext)
+//                    recipeItem1.recipeName = "test 1"
+//                    recipeItem1.link = "www.google.com"
+//                    recipeItem1.prepTime = 10
+//
+//                    let recipeItem2 = FavoriteItem( context: self.managedObjectContext)
+//                    recipeItem2.recipeName = "test 2"
+//                    recipeItem2.link = "www.google.com"
+//                    recipeItem2.prepTime = 11
+//
+//                    let recipeItem3 = FavoriteItem( context: self.managedObjectContext)
+//                    recipeItem3.recipeName = "test 3"
+//                    recipeItem3.link = "www.google.com"
+//                    recipeItem3.prepTime = 12
+//
+//                    do {
+//                        try self.managedObjectContext.save()
+//                    } catch {
+//                        print(error)
+//                    }
+//
+//                }) {
+//                    Text("Add")
+//                        .foregroundColor(.black)
+//                }
             }
         }
         

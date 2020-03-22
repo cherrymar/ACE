@@ -10,21 +10,29 @@ import Foundation
 import CoreData
 
 
-public class RecipeItem:NSManagedObject, Identifiable {
-    @NSManaged public var link: String?
-    @NSManaged public var prepTime: Double
-    @NSManaged public var recipeName: String?
+public class RecipeItem:Identifiable {
+    var link: String?
+    var prepTime: Double
+    var recipeName: String?
+    
+    init(link: String, prepTime: Double, recipeName: String) {
+        self.link = link
+        self.prepTime = prepTime
+        self.recipeName = recipeName
+//        super.init()
+    }
 }
 
 extension RecipeItem {
-    static func getAllRecipeItems(sortType: String) -> NSFetchRequest<RecipeItem> {
+    static func getAllRecipeItems(sortBy: String) -> Array<RecipeItem> {
         // Get ingredients from database
-        let request:NSFetchRequest<RecipeItem> = RecipeItem.fetchRequest() as!
-            NSFetchRequest<RecipeItem>
+        let RecipeItem1 = RecipeItem(link: "appliepie.com", prepTime: 1, recipeName: "Applie Pie")
+        let RecipeItem2 = RecipeItem(link: "ccc.com", prepTime: 2, recipeName: "Chocolate Chip Cookies")
+        let RecipeItem3 = RecipeItem(link: "macarons.com", prepTime: 3, recipeName: "Macarons")
         
-        // Sort list of ingredients by time added
-        let sortDescriptor = NSSortDescriptor(key: sortType, ascending: true)
-        request.sortDescriptors = [sortDescriptor]
+        let request = [RecipeItem1, RecipeItem2, RecipeItem3]
+        
+        // Sort list of recipes by sortType
         
         return request
     }

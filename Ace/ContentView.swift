@@ -36,7 +36,7 @@ struct ContentView: View {
                 Text("\(Constants.TabBarText.tabBar1)")
             }).tag(1)
             // Favorites Tab
-            FavoritesView().tabItem({
+            FavoriteView().tabItem({
                 Image(Constants.TabBarImageName.tabBar2)
                     .font(.title)
                 Text("\(Constants.TabBarText.tabBar2)")

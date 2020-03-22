@@ -20,29 +20,23 @@ struct RecipeItemView: View {
     var body: some View {
         // Create a horizontally stacked view of items
         HStack {
-            HStack {
-                VStack(alignment: .leading) {
+            VStack(alignment: .leading) {
                 HStack {
                     Text(recipeName).font(.headline)
                     Text(link).font(.caption)
                 }
                 Text(String(prepTime)).font(.caption)
-                }
+            }
             Button(action: {
-//                let recipeItem = RecipeItem(context: self.managedObjectContext)
-//                recipeItem.favorite =
-//                do {
-//                    try self.managedObjectContext.save()
-//                } catch {
-//                    print(error)
-//                }
             }) {
-                Image("heart_filled")
+                Image(systemName: "heart.fill")
+                    // bug here???
                     .foregroundColor(.red)
                     .imageScale(.large)
-                }
+            
             }
         }
+        
     }
 }
 

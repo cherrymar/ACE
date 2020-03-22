@@ -10,26 +10,17 @@
 import SwiftUI
 
 struct SearchForRecipeView: View {
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(fetchRequest: RecipeItem.getAllRecipeItems(sortType: "link")) var recipeItems:FetchedResults<RecipeItem>
     
-//    @State private var newIngredientItem = ""
-    //    @State private var expirationDate = Date();
-        
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
     var body: some View {
-        NavigationView {
+        HStack {
             List {
-                // Display recipes found
-                // Create a horizontally stacked view (text field and add button)
-                // Display each ingredient in database
-                ForEach(self.recipeItems) { recipeItem in
-                    // Display ingredient name and time added
-                    RecipeItemView(recipeName: recipeItem.recipeName!, link: recipeItem.link!, prepTime: String(recipeItem.prepTime))
-                }
-                
+                RecipeItemView(recipeName: "Apple Pie", link: "appliepie.com", prepTime: "2.5")
+                RecipeItemView(recipeName: "Chocolate Chip Cookies", link: "ccc.com", prepTime: "0.5")
+                RecipeItemView(recipeName: "Macarons", link: "macarons.com", prepTime: "3.0")
+                RecipeItemView(recipeName: "Steak", link: "steak.com", prepTime: "1.0")
             }
-            .navigationBarTitle(Text("Recipes"))
-//            .navigationBarItems(trailing: EditButton())
         }
     }
 }
