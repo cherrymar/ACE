@@ -30,8 +30,6 @@ extension FavoriteItem {
     
     static func inFavorites(link: String) -> Bool {
         // Get favorites from database
-//        fetchRequest.predicate = NSPredicate(format: "link == %@", link)
-        
         let request:NSFetchRequest<FavoriteItem> = FavoriteItem.fetchRequest() as!
             NSFetchRequest<FavoriteItem>
 
