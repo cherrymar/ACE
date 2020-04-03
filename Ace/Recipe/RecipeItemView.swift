@@ -26,12 +26,21 @@ struct RecipeItemView: View {
                 Text(String(prepTime)).font(.caption)
             }
             Button(action: {
+                let favorite = FavoriteItem( context: self.managedObjectContext)
+                favorite.recipeName = self.recipeName
+                favorite.link = self.link
+                favorite.prepTime = Double(self.prepTime)!
+                
+                do {
+                    try self.managedObjectContext.save()
+                } catch {
+                    print(error)
+                }
             }) {
-                Image(systemName: "heart.fill")
+                Image(systemName: "heart")
                     // bug here???
                     .foregroundColor(.red)
                     .imageScale(.large)
-            
             }
         }
     }
