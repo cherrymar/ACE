@@ -15,8 +15,6 @@ struct RecipeItemView: View {
     var link:String = ""
     var prepTime:String = ""
     
-//    @State private var newFavoriteItem = ""
-    
     var body: some View {
         // Create a horizontally stacked view of items
         HStack {
@@ -36,7 +34,6 @@ struct RecipeItemView: View {
             
             }
         }
-        
     }
 }
 

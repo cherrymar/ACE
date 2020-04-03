@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-//var HomeView = HomeView()
 
 struct ContentView: View {
     
@@ -16,7 +15,6 @@ struct ContentView: View {
         UITabBar.appearance().backgroundColor = .white
         UITabBar.appearance().barTintColor = .black
         UITabBar.appearance().tintColor = UIColor(named: "softRed")
-//        UITabBar.appearance().
     }
     
     @State var selected = 3

@@ -19,7 +19,6 @@ public class RecipeItem:Identifiable {
         self.link = link
         self.prepTime = prepTime
         self.recipeName = recipeName
-//        super.init()
     }
 }
 

@@ -32,7 +32,7 @@ struct HomeView: View {
                     Text("Search for a recipe")
                 }.buttonStyle(NavigationButtonStyle())
                 
-                
+                // Testing adding to favorites
 //                Button(action: {
 //                    let recipeItem1 = FavoriteItem( context: self.managedObjectContext)
 //                    recipeItem1.recipeName = "test 1"
