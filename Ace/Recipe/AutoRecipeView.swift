@@ -13,10 +13,11 @@ struct AutoRecipeView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: FavoriteItem.getAllFavoriteItems(sortBy: "link")) var favoriteItems:FetchedResults<FavoriteItem>
     
+    // Get all recipes
     var recipeItems = RecipeItem.getAllRecipeItems(sortBy: "link")
     
+    // Display
     var body: some View {
-        
         HStack {
             List {
                 ForEach(self.recipeItems) { recipeItem in

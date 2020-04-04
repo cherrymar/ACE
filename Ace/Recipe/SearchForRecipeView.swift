@@ -12,14 +12,18 @@ import SwiftUI
 struct SearchForRecipeView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
+    @FetchRequest(fetchRequest: FavoriteItem.getAllFavoriteItems(sortBy: "link")) var favoriteItems:FetchedResults<FavoriteItem>
     
+    // Get all recipes
+    var recipeItems = RecipeItem.getAllRecipeItems(sortBy: "link")
+    
+    // Display
     var body: some View {
         HStack {
             List {
-                RecipeItemView(recipeName: "Apple Pie", link: "appliepie.com", prepTime: "2.5")
-                RecipeItemView(recipeName: "Chocolate Chip Cookies", link: "ccc.com", prepTime: "0.5")
-                RecipeItemView(recipeName: "Macarons", link: "macarons.com", prepTime: "3.0")
-                RecipeItemView(recipeName: "Steak", link: "steak.com", prepTime: "1.0")
+                ForEach(self.recipeItems) { recipeItem in
+                    RecipeItemView(recipeName: recipeItem.recipeName!, link: recipeItem.link!, prepTime: "\(recipeItem.prepTime)")
+                }
             }
         }
     }

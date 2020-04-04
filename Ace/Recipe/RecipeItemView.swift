@@ -16,7 +16,7 @@ struct RecipeItemView: View {
     var prepTime:String = ""
     
     var body: some View {
-        // Create a horizontally stacked view of items
+        // Create a horizontally stacked view of recipes
         HStack {
             VStack(alignment: .leading) {
                 HStack {
@@ -25,6 +25,8 @@ struct RecipeItemView: View {
                 }
                 Text(String(prepTime)).font(.caption)
             }
+            
+            // Buttun to save recipe to favorites
             Button(action: {
                 let favorite = FavoriteItem( context: self.managedObjectContext)
                 favorite.recipeName = self.recipeName
