@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 //import UIKit
     // List of briefFoodData
 public class CandidateContainer {
@@ -34,6 +35,14 @@ struct SearchView: View {
     
     @State public var newIngredientItem = ""
     @State private var expirationDate = Date();
+    
+    // To format the way the date is displayed
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter
+    }
     
     var body: some View {
         NavigationView {
@@ -65,7 +74,7 @@ struct SearchView: View {
                     // Display each ingredient in database
                     ForEach(self.ingredientItems) { ingredItem in
                         // Display ingredient name and time added
-                        IngredientItemView(ingredient: ingredItem.ingredient!, createdAt: "\(ingredItem.createdAt!)", expiresOn: "\(ingredItem.expiresOn!)")
+                        IngredientItemView(ingredient: ingredItem.ingredient!, createdAt: "Added: \(self.dateFormatter.string(from: ingredItem.createdAt!))", expiresOn: "Expires: \(self.dateFormatter.string(from: ingredItem.expiresOn!))")
                     }.onDelete{indexSet in
                         // Delete ingredients
                         let deleteItem = self.ingredientItems[indexSet.first!]
@@ -107,7 +116,37 @@ struct SearchView: View {
         }
         // Reset text field for new ingredient
         self.newIngredientItem = ""
+        
+        //Set notification for expiration
+        let center = UNUserNotificationCenter.current()
+        
+        center.requestAuthorization(options: [.alert, .sound]) {
+            (granted, error) in
+        }
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Hey I'm a notification!"
+        content.body = ingredientID
+        let date = Date().addingTimeInterval(10)
+        
+         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+        
+//        var dateComponents = DateComponents()
+//        dateComponents.year = ingredientItem.expiresOn.dateC
+        
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        
+        let uuidString = UUID().uuidString
+        
+        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        
+        center.add(request) { (error) in
+            //check error parameters
+        }
     }
+    
+    
 }
 
 struct SearchView_Previews: PreviewProvider {
