@@ -9,13 +9,17 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @State var username = ""
+    
+    var profileController = ProfileDataController.getController();
+    
     var body: some View {
         NavigationView {
             List {
                 // Section 1- Add ingredients
                 Section(header: Text("Profile Settings")) {
                     VStack (alignment: .leading) {
-                        Text("Test username")
+                        Text("Test \(username)")
                         Text("Test email")
                         Text("Test username")
                     }
@@ -23,7 +27,17 @@ struct SettingsView: View {
                 .font(.headline)
                 Section(header: Text("Search Settings")) {
                     VStack (alignment: .leading) {
-                        Text("Test username")
+                        TextField("Enter username...", text: $username, onEditingChanged: { (changed) in
+                            print("Username onEditingChanged - \(changed)")
+                        }) {
+                            // On Commit
+                            do {
+                                var profile = try self.profileController.fetchProfile()
+                                try self.profileController.update(profile: profile, name:self.username)
+                            } catch {
+                                print("profile fetching/updating error")
+                            }
+                        }
                         Text("Test email")
                         Text("Test username")
                     }

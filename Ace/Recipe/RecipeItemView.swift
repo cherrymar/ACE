@@ -40,7 +40,6 @@ struct RecipeItemView: View {
                 }
             }) {
                 Image(systemName: "heart")
-                    // bug here???
                     .foregroundColor(.red)
                     .imageScale(.large)
             }
