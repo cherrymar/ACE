@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		76ED2262240EE78B00F0CD9B /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ED2261240EE78B00F0CD9B /* RestManager.swift */; };
 		76ED2264240EE7C900F0CD9B /* FoodStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ED2263240EE7C900F0CD9B /* FoodStructure.swift */; };
-		76ED2266240EECF800F0CD9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ED2265240EECF800F0CD9B /* ViewController.swift */; };
 		76ED2268240EEFCB00F0CD9B /* RestCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ED2267240EEFCB00F0CD9B /* RestCaller.swift */; };
+		A71C601B2443F7EB0028ABB0 /* Profile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A71C60192443F7EB0028ABB0 /* Profile.xcdatamodeld */; };
+		A71C601D244637580028ABB0 /* ProfileDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71C601C244637580028ABB0 /* ProfileDataController.swift */; };
 		BA0C37BA2411B1A5001B3BFB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0C37B92411B1A5001B3BFB /* HomeView.swift */; };
 		BA0C37BC2411B1FB001B3BFB /* RecipeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0C37BB2411B1FB001B3BFB /* RecipeItem.swift */; };
 		BA0C37BE2411B367001B3BFB /* RecipeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0C37BD2411B367001B3BFB /* RecipeItemView.swift */; };
@@ -51,8 +52,9 @@
 /* Begin PBXFileReference section */
 		76ED2261240EE78B00F0CD9B /* RestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		76ED2263240EE7C900F0CD9B /* FoodStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodStructure.swift; sourceTree = "<group>"; };
-		76ED2265240EECF800F0CD9B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		76ED2267240EEFCB00F0CD9B /* RestCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestCaller.swift; sourceTree = "<group>"; };
+		A71C601A2443F7EB0028ABB0 /* Profile.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Profile.xcdatamodel; sourceTree = "<group>"; };
+		A71C601C244637580028ABB0 /* ProfileDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataController.swift; sourceTree = "<group>"; };
 		BA0C37B92411B1A5001B3BFB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		BA0C37BB2411B1FB001B3BFB /* RecipeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeItem.swift; sourceTree = "<group>"; };
 		BA0C37BD2411B367001B3BFB /* RecipeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeItemView.swift; sourceTree = "<group>"; };
@@ -102,6 +104,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A71C60182443F6330028ABB0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BA11C61B240AFA94008C0BC3 /* SettingsView.swift */,
+				A71C60192443F7EB0028ABB0 /* Profile.xcdatamodeld */,
+				A71C601C244637580028ABB0 /* ProfileDataController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		BA0C37B62411B09A001B3BFB /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,8 +145,8 @@
 		BA14C8B023FC967F00BBB63F /* Ace */ = {
 			isa = PBXGroup;
 			children = (
+				A71C60182443F6330028ABB0 /* Settings */,
 				BA14C8B123FC967F00BBB63F /* AppDelegate.swift */,
-				BA11C61B240AFA94008C0BC3 /* SettingsView.swift */,
 				BA0C37B62411B09A001B3BFB /* Search */,
 				BA14C8B323FC967F00BBB63F /* SceneDelegate.swift */,
 				BAAF64B6241593B80028646E /* Favorites */,
@@ -142,8 +154,6 @@
 				BA14C8B823FC967F00BBB63F /* ContentView.swift */,
 				BA11C621240AFFC4008C0BC3 /* Constants.swift */,
 				BACEF1D32436CE0100045278 /* Recipe */,
-				BA8992D42433BC3800FBFBC4 /* RecipeViewController.swift */,
-				BA8992D62433C2E700FBFBC4 /* Recipe.swift */,
 				BA14C8D823FC996F00BBB63F /* TabBarController.swift */,
 				BA14C8BA23FC968000BBB63F /* Assets.xcassets */,
 				BA14C8BF23FC968000BBB63F /* LaunchScreen.storyboard */,
@@ -153,7 +163,6 @@
 				BA14C8BC23FC968000BBB63F /* Preview Content */,
 				76ED2261240EE78B00F0CD9B /* RestManager.swift */,
 				76ED2263240EE7C900F0CD9B /* FoodStructure.swift */,
-				76ED2265240EECF800F0CD9B /* ViewController.swift */,
 				76ED2267240EEFCB00F0CD9B /* RestCaller.swift */,
 			);
 			path = Ace;
@@ -189,6 +198,8 @@
 		BACEF1D32436CE0100045278 /* Recipe */ = {
 			isa = PBXGroup;
 			children = (
+				BA8992D62433C2E700FBFBC4 /* Recipe.swift */,
+				BA8992D42433BC3800FBFBC4 /* RecipeViewController.swift */,
 				BA0C37BB2411B1FB001B3BFB /* RecipeItem.swift */,
 				BA0C37BD2411B367001B3BFB /* RecipeItemView.swift */,
 				BAAF64B72415A2C20028646E /* AutoRecipeView.swift */,
@@ -299,13 +310,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76ED2266240EECF800F0CD9B /* ViewController.swift in Sources */,
 				BA11C61E240AFAA3008C0BC3 /* FavoriteView.swift in Sources */,
 				BA14C8D923FC996F00BBB63F /* TabBarController.swift in Sources */,
 				BA0C37BC2411B1FB001B3BFB /* RecipeItem.swift in Sources */,
+				A71C601D244637580028ABB0 /* ProfileDataController.swift in Sources */,
 				BA14C8B223FC967F00BBB63F /* AppDelegate.swift in Sources */,
 				76ED2264240EE7C900F0CD9B /* FoodStructure.swift in Sources */,
 				BA82D0A8240309F40066DA39 /* IngredientItemView.swift in Sources */,
+				A71C601B2443F7EB0028ABB0 /* Profile.xcdatamodeld in Sources */,
 				BAAF64B424158DE90028646E /* FavoriteItemView.swift in Sources */,
 				BAAF64BA2415A2D80028646E /* SearchForRecipeView.swift in Sources */,
 				BA11C61C240AFA95008C0BC3 /* SettingsView.swift in Sources */,
@@ -583,6 +595,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		A71C60192443F7EB0028ABB0 /* Profile.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A71C601A2443F7EB0028ABB0 /* Profile.xcdatamodel */,
+			);
+			currentVersion = A71C601A2443F7EB0028ABB0 /* Profile.xcdatamodel */;
+			path = Profile.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		BA14C8B523FC967F00BBB63F /* Ace.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
