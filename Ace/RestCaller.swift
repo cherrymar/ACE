@@ -7,17 +7,26 @@
 //
 
 import Foundation
+import CoreData
+import SwiftUI
 
 class RestCaller {
     let rest = RestManager()
-    let apiKey = "RH3s29lFBdgsmpyxvQAwGJz60Ec71bxVlgjUBfRX"
-    
+    var apiKey = ""
+    //"RH3s29lFBdgsmpyxvQAwGJz60Ec71bxVlgjUBfRX"
+    init() {
+        self.apiKey = ""
+    }
+    func setKey(newKey: String) {
+        apiKey = newKey
+    }
     func searchFood(foodName: String, candidateContainer: CandidateContainer) {
+        //apiKey = profiles.first!.api_key ?? "no key";
         let baseUrl = "https://api.nal.usda.gov/fdc/v1/search"
         let fullUrl = baseUrl + "?api_key=" + apiKey// + "\\&generalSearchInput="
             
         var fixedUrl = fullUrl + foodName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        
+        print(fullUrl)
         guard let url = URL(string: fullUrl) else {return}
         rest.requestHttpHeaders.add(value: "application/json", forKey: "Content-Type")
         rest.httpBodyParameters.add(value: foodName, forKey: "generalSearchInput")

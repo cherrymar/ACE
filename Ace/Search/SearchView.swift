@@ -29,10 +29,10 @@ var candidateContainer = CandidateContainer()
 
 
 struct SearchView: View {
-    let restCaller = RestCaller()
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: IngredientItem.getAllIngredientItems()) var ingredientItems:FetchedResults<IngredientItem>
-    
+    @FetchRequest(entity: Profile.entity(), sortDescriptors: []) var profiles: FetchedResults<Profile>
+    let restCaller = RestCaller()
     @State public var newIngredientItem = ""
     @State private var expirationDate = Date();
     
@@ -56,6 +56,8 @@ struct SearchView: View {
                             HStack {
                                 TextField("New ingredient", text: self.$newIngredientItem)
                                 Button(action: {
+                                    self.restCaller.setKey(newKey: self.profiles
+                                        .first!.api_key!)
                                     self.restCaller.searchFood(foodName: self.newIngredientItem, candidateContainer: candidateContainer)
                                 }) {
                                     Image(systemName: "plus.circle.fill").foregroundColor(.green).imageScale(.large)

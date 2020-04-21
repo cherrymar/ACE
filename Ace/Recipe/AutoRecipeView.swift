@@ -12,6 +12,7 @@ struct AutoRecipeView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: FavoriteItem.getAllFavoriteItems(sortBy: "link")) var favoriteItems:FetchedResults<FavoriteItem>
+    @FetchRequest(entity: Recipe.entity(), sortDescriptors: []) var recipes: FetchedResults<Recipe>
     
     // Get all recipes
     var recipeItems = RecipeItem.getAllRecipeItems(sortBy: "link")
@@ -19,12 +20,25 @@ struct AutoRecipeView: View {
     // Display
     var body: some View {
         HStack {
-            List {
-                ForEach(self.recipeItems) { recipeItem in
-                    RecipeItemView(recipeName: recipeItem.recipeName!, link: recipeItem.link!, prepTime: "\(recipeItem.prepTime)")
+            List (recipes, id: \.self){ recipe in
+                Button(action: {
+                    self.make(recipe: recipe)
+                }) {
+                    Text(recipe.name ?? "default recipe name")
+                    
                 }
             }
         }
+    }
+    
+    func make(recipe: Recipe) {
+        let ingredientList: [(String, Double)] = []//recipe.ingredients.
+        let ingredientRequest = IngredientItem.fetchRequest();
+        for (ingredientName, amount) in ingredientList {
+            ingredientRequest.predicate = NSPredicate (format: "name==@", ingredientName)
+            //ingredientRequest.fetchLimi
+        }
+        
     }
 }
 

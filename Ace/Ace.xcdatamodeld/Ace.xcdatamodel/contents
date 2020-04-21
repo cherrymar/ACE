@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19E266" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="FavoriteItem" representedClassName=".FavoriteItem" syncable="YES">
         <attribute name="link" optional="YES" attributeType="String"/>
         <attribute name="prepTime" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -11,17 +11,32 @@
         </uniquenessConstraints>
     </entity>
     <entity name="IngredientItem" representedClassName=".IngredientItem" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="expiresOn" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="ingredient" optional="YES" attributeType="String"/>
+        <relationship name="used_by" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="uses" inverseEntity="Recipe"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="ingredient"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="Profile" representedClassName="Profile" syncable="YES" codeGenerationType="class">
+        <attribute name="api_key" optional="YES" attributeType="String"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Recipe" representedClassName="Recipe" syncable="YES" codeGenerationType="class">
+        <attribute name="ingredients" optional="YES" attributeType="Transformable"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="tastiness" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="uses" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IngredientItem" inverseName="used_by" inverseEntity="IngredientItem"/>
+    </entity>
     <elements>
         <element name="FavoriteItem" positionX="-61.828125" positionY="184.73828125" width="128" height="88"/>
-        <element name="IngredientItem" positionX="-62.828125" positionY="78.328125" width="128" height="88"/>
+        <element name="IngredientItem" positionX="-62.828125" positionY="78.328125" width="128" height="118"/>
+        <element name="Profile" positionX="-18" positionY="225" width="128" height="88"/>
+        <element name="Recipe" positionX="18" positionY="225" width="128" height="103"/>
     </elements>
 </model>

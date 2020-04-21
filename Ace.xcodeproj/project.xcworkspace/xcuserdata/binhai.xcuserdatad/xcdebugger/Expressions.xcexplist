@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "RestCaller.searchFood(foodName:candidateContainer:):RestCaller.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.profiles">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ProfileDataController.fetchProfile():ProfileDataController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "fetchProfiles()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RestCaller.init():RestCaller.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

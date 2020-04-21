@@ -8,17 +8,19 @@
 
 import Foundation
 import CoreData
-
+import SwiftUI
 
 public class RecipeItem:Identifiable {
     var link: String?
     var prepTime: Double
     var recipeName: String?
+    var score: Int
     
     init(link: String, prepTime: Double, recipeName: String) {
         self.link = link
         self.prepTime = prepTime
         self.recipeName = recipeName
+        self.score = 0
     }
 }
 
