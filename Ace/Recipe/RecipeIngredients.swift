@@ -8,13 +8,19 @@
 
 import Foundation
 
+/* Swift doesn't allow storage of specific types beyond primitives/stirngs, so
+ * we must use a transformable object via encoding and decoding to store more
+ * complex data in coredata.
+ */
 class RecipeIngredients: NSObject, NSCoding {
     var ingredients: [(String, Double)]
     
+    // Key(s) used in methods below
     enum Keys: String {
         case ingredients = "ingredients"
     }
     
+    // Puts components into specific keys, can retrieve it by name later.
     func encode(with aCoder: NSCoder) {
         aCoder.encode(ingredients, forKey: "ingredients")
     }

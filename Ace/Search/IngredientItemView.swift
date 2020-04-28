@@ -13,14 +13,16 @@ struct IngredientItemView: View {
     var ingredient:String = ""
     var createdAt:String = ""
     var expiresOn:String = ""
+    var amount:String = ""
     
     var body: some View {
         // Create a horizontally stacked view of items
-        HStack {
+        HStack (){
             VStack(alignment: .leading) {
                 Text(ingredient).font(.headline)
                 Text(createdAt).font(.caption)
                 Text(expiresOn).font(.caption)
+                Text("amount: " + amount.description).font(.caption)
             }
         }
     }
@@ -30,6 +32,6 @@ struct IngredientItemView: View {
 struct IngredientItemView_Preview: PreviewProvider {
     static var previews: some View {
         // How to use IngredientItemView
-        IngredientItemView(ingredient: "ingredient", createdAt: "date added", expiresOn: "expires on")
+        IngredientItemView(ingredient: "ingredient", createdAt: "date added", expiresOn: "expires on", amount: "2.0")
     }
 }

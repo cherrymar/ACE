@@ -13,6 +13,12 @@ public class IngredientItem:NSManagedObject, Identifiable {
     @NSManaged public var createdAt:Date?
     @NSManaged public var expiresOn:Date?
     @NSManaged public var ingredient:String?
+    //@NSManaged public var amount:String?
+    @NSManaged public var amount:String?
+    
+    public func changeAmount(addition:Double!) {
+        self.amount = (Double(self.amount!)! + addition!).description
+    }
 }
 
 extension IngredientItem {

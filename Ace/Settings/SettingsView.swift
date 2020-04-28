@@ -38,7 +38,7 @@ struct SettingsView: View {
                             }
                         }.foregroundColor(.green).colorScheme(.dark)
                         
-                        TextField("Api Key: " + self.profiles.first!.api_key!, text: self.$api_key) {
+                        TextField("Api Key: " + "self.profiles.first!.api_key!", text: self.$api_key) {
                             // On Commit
                             if (self.profiles.count < 1) {
                                 self.createProfile();

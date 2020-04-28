@@ -75,8 +75,38 @@ struct SearchView: View {
                 Section(header: Text("Ingredients")) {
                     // Display each ingredient in database
                     ForEach(self.ingredientItems) { ingredItem in
+                        HStack(spacing: 30){
                         // Display ingredient name and time added
-                        IngredientItemView(ingredient: ingredItem.ingredient!, createdAt: "Added: \(self.dateFormatter.string(from: ingredItem.createdAt!))", expiresOn: "Expires: \(self.dateFormatter.string(from: ingredItem.expiresOn!))")
+                        IngredientItemView(ingredient: ingredItem.ingredient!, createdAt: "Added: \(self.dateFormatter.string(from: ingredItem.createdAt!))", expiresOn: "Expires: \(self.dateFormatter.string(from: ingredItem.expiresOn!))", amount: ingredItem.amount!)
+                            
+                            VStack {
+                                Button(action:{
+                                    ingredItem.changeAmount(addition: 1)
+                                    //print("plus")
+                                    do {
+                                        try self.managedObjectContext.save()
+                                    } catch {
+                                        print(error)
+                                    }
+                                }){
+                                    Text("+").background(Color.green)
+                                    .foregroundColor(.white)
+                                }.fixedSize().frame(width: 10, height: 20)
+                                
+                                Button(action:{
+                                    ingredItem.changeAmount(addition: -1)
+                                    //print("minus")
+                                    do {
+                                        try self.managedObjectContext.save()
+                                    } catch {
+                                        print(error)
+                                    }
+                                }){
+                                    Text("-").background(Color.red)
+                                    .foregroundColor(.white)
+                                }.frame(width: 10, height: 20)
+                            }
+                        }
                     }.onDelete{indexSet in
                         // Delete ingredients
                         let deleteItem = self.ingredientItems[indexSet.first!]
@@ -108,6 +138,7 @@ struct SearchView: View {
         ingredientItem.ingredient = ""
         ingredientItem.createdAt = Date()
         ingredientItem.expiresOn = self.expirationDate
+        ingredientItem.amount = "0.0"
         self.restCaller.getFood(foodId: ingredientID, ingredientItem: ingredientItem)
         
         // Save ingredient to database
