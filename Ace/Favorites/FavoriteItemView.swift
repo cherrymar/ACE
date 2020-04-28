@@ -19,6 +19,9 @@ struct FavoriteItemView: View {
         // Create a horizontally stacked view of items
 //        HStack {
 //            RecipeItemView(recipeName: recipeName, link: link, prepTime: prepTime)
+        Button(action:{
+            
+        }){
             VStack(alignment: .leading) {
                 HStack {
                     Text(recipeName).font(.headline)
@@ -35,6 +38,7 @@ struct FavoriteItemView: View {
 //
 //            }
 //        }
+        }
     }
 }
 

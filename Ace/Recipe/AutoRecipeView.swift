@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct AutoRecipeView: View {
     
@@ -33,10 +34,15 @@ struct AutoRecipeView: View {
     
     func make(recipe: Recipe) {
         let ingredientList: [(String, Double)] = []//recipe.ingredients.
-        let ingredientRequest = IngredientItem.fetchRequest();
+        let ingredientRequest = IngredientItem.fetchRequest() as! NSFetchRequest<IngredientItem>;
         for (ingredientName, amount) in ingredientList {
             ingredientRequest.predicate = NSPredicate (format: "name==@", ingredientName)
-            //ingredientRequest.fetchLimi
+            do{
+                try ingredientRequest.execute().first?.changeAmount(addition: amount * -1)
+                
+            } catch {
+                
+            }
         }
         
     }
